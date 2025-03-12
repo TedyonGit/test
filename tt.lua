@@ -3542,7 +3542,7 @@ Topbar.Hide.MouseButton1Click:Connect(function()
 end)
 
 hideHotkeyConnection = UserInputService.InputBegan:Connect(function(input, processed)
-	if (input.KeyCode == Enum.KeyCode[settingsTable.General.rayfieldOpen.Value or 'K'] and not processed) then
+	if (input.KeyCode == Enum.KeyCode['K'] and not processed) then
 		if Debounce then return end
 		if Hidden then
 			Hidden = false
