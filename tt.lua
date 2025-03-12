@@ -1526,7 +1526,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 	if dragBar then
 		dragBar.Visible = false
 		dragBarCosmetic.BackgroundTransparency = 1
-		dragBar.Visible = true
+		dragBar.Visible = false
 	end
 
 	if Settings.Theme then
@@ -1581,7 +1581,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 	end)
 
 
-	makeDraggable(Main, Topbar, true, {dragOffset, dragOffsetMobile})
+	makeDraggable(Main, Topbar, false, {dragOffset, dragOffsetMobile})
 	if dragBar then dragBar.Position = useMobileSizing and UDim2.new(0.5, 0, 0.5, dragOffsetMobile) or UDim2.new(0.5, 0, 0.5, dragOffset) makeDraggable(Main, dragInteract, true, {dragOffset, dragOffsetMobile}) end
 
 	for _, TabButton in ipairs(TabList:GetChildren()) do
