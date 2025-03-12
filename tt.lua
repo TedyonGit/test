@@ -24,7 +24,18 @@ local Release = "Build 1.672"
 local RayfieldFolder = "Rayfield"
 local ConfigurationFolder = RayfieldFolder.."/Configurations"
 local ConfigurationExtension = ".rfld"
-local settingsTable = {}
+-- local settingsTable = {
+-- 	General = {
+-- 		-- if needs be in order just make getSetting(name)
+-- 		rayfieldOpen = {Type = 'bind', Value = 'K', Name = 'Rayfield Keybind'},
+-- 		-- buildwarnings
+-- 		-- rayfieldprompts
+
+-- 	},
+-- 	System = {
+-- 		usageAnalytics = {Type = 'toggle', Value = true, Name = 'Anonymised Analytics'},
+-- 	}
+-- }
 
 local HttpService = getService('HttpService')
 local RunService = getService('RunService')
@@ -39,56 +50,69 @@ local request = (syn and syn.request) or (fluxus and fluxus.request) or (http an
 
 
 
-local function loadSettings()
-	local file = nil
+-- local function loadSettings()
+-- 	local file = nil
 	
-	local success, result =	pcall(function()
-		task.spawn(function()
-			if isfolder and isfolder(RayfieldFolder) then
-				if isfile and isfile(RayfieldFolder..'/settings'..ConfigurationExtension) then
-					file = readfile(RayfieldFolder..'/settings'..ConfigurationExtension)
-				end
-			end
+-- 	local success, result =	pcall(function()
+-- 		task.spawn(function()
+-- 			if isfolder and isfolder(RayfieldFolder) then
+-- 				if isfile and isfile(RayfieldFolder..'/settings'..ConfigurationExtension) then
+-- 					file = readfile(RayfieldFolder..'/settings'..ConfigurationExtension)
+-- 				end
+-- 			end
 
-			-- for debug in studio
-			if useStudio then
-				file = [[
-		{"General":{"rayfieldOpen":{"Value":"K","Type":"bind","Name":"Rayfield Keybind","Element":{"HoldToInteract":false,"Ext":true,"Name":"Rayfield Keybind","Set":null,"CallOnChange":true,"Callback":null,"CurrentKeybind":"K"}}},"System":{"usageAnalytics":{"Value":false,"Type":"toggle","Name":"Anonymised Analytics","Element":{"Ext":true,"Name":"Anonymised Analytics","Set":null,"CurrentValue":false,"Callback":null}}}}
-	]]
-			end
-
-
-			if file then
-				local success, decodedFile = pcall(function() return HttpService:JSONDecode(file) end)
-				if success then
-					file = decodedFile
-				else
-					file = {}
-				end
-			else
-				file = {}
-			end
+-- 			-- for debug in studio
+-- 			if useStudio then
+-- 				file = [[
+-- 		{"General":{"rayfieldOpen":{"Value":"K","Type":"bind","Name":"Rayfield Keybind","Element":{"HoldToInteract":false,"Ext":true,"Name":"Rayfield Keybind","Set":null,"CallOnChange":true,"Callback":null,"CurrentKeybind":"K"}}},"System":{"usageAnalytics":{"Value":false,"Type":"toggle","Name":"Anonymised Analytics","Element":{"Ext":true,"Name":"Anonymised Analytics","Set":null,"CurrentValue":false,"Callback":null}}}}
+-- 	]]
+-- 			end
 
 
-			if not settingsCreated then 
-				cachedSettings = file
-				return
-			end
-		end)
-	end)
+-- 			if file then
+-- 				local success, decodedFile = pcall(function() return HttpService:JSONDecode(file) end)
+-- 				if success then
+-- 					file = decodedFile
+-- 				else
+-- 					file = {}
+-- 				end
+-- 			else
+-- 				file = {}
+-- 			end
+
+
+-- 			if not settingsCreated then 
+-- 				cachedSettings = file
+-- 				return
+-- 			end
+
+-- 			-- if file ~= {} then
+-- 			-- 	for categoryName, settingCategory in pairs(settingsTable) do
+-- 			-- 		if file[categoryName] then
+-- 			-- 			for settingName, setting in pairs(settingCategory) do
+-- 			-- 				if file[categoryName][settingName] then
+-- 			-- 					setting.Value = file[categoryName][settingName].Value
+-- 			-- 					setting.Element:Set(setting.Value)
+-- 			-- 				end
+-- 			-- 			end
+-- 			-- 		end
+-- 			-- 	end
+-- 			-- end
+-- 		end)
+-- 	end)
 	
-	if not success then 
-		if writefile then
-			warn('Rayfield had an issue accessing configuration saving capability.')
-		end
-	end
-end
+-- 	if not success then 
+-- 		if writefile then
+-- 			warn('Rayfield had an issue accessing configuration saving capability.')
+-- 		end
+-- 	end
+-- end
 
 if debugX then
 	warn('Now Loading Settings Configuration')
 end
 
-loadSettings()
+-- loadSettings()
 
 if debugX then
 	warn('Settings Loaded')
@@ -1346,89 +1370,89 @@ local function Minimise()
 	Debounce = false
 end
 
-local function updateSettings()
-	local encoded
-	local success, err = pcall(function()
-		encoded = HttpService:JSONEncode(settingsTable)
-	end)
+-- local function updateSettings()
+-- 	local encoded
+-- 	local success, err = pcall(function()
+-- 		encoded = HttpService:JSONEncode(settingsTable)
+-- 	end)
 
-	if success then
-		if useStudio then
-			if script.Parent['get.val'] then
-				script.Parent['get.val'].Value = encoded
-			end
-		end
-		if writefile then
-			writefile(RayfieldFolder..'/settings'..ConfigurationExtension, encoded)
-		end
-	end
-end
+-- 	if success then
+-- 		if useStudio then
+-- 			if script.Parent['get.val'] then
+-- 				script.Parent['get.val'].Value = encoded
+-- 			end
+-- 		end
+-- 		if writefile then
+-- 			writefile(RayfieldFolder..'/settings'..ConfigurationExtension, encoded)
+-- 		end
+-- 	end
+-- end
 
-local function createSettings(window)
-	if not (writefile and isfile and readfile and isfolder and makefolder) and not useStudio then
-		if Topbar['Settings'] then Topbar.Settings.Visible = false end
-		Topbar['Search'].Position = UDim2.new(1, -75, 0.5, 0)
-		warn('Can\'t create settings as no file-saving functionality is available.')
-		return
-	end
+-- local function createSettings(window)
+-- 	if not (writefile and isfile and readfile and isfolder and makefolder) and not useStudio then
+-- 		if Topbar['Settings'] then Topbar.Settings.Visible = false end
+-- 		Topbar['Search'].Position = UDim2.new(1, -75, 0.5, 0)
+-- 		warn('Can\'t create settings as no file-saving functionality is available.')
+-- 		return
+-- 	end
 
-	local newTab = window:CreateTab('Rayfield Settings', 0, true)
+-- 	local newTab = window:CreateTab('Rayfield Settings', 0, true)
 
-	if TabList['Rayfield Settings'] then
-		TabList['Rayfield Settings'].LayoutOrder = 1000
-	end
+-- 	if TabList['Rayfield Settings'] then
+-- 		TabList['Rayfield Settings'].LayoutOrder = 1000
+-- 	end
 
-	if Elements['Rayfield Settings'] then
-		Elements['Rayfield Settings'].LayoutOrder = 1000
-	end
+-- 	if Elements['Rayfield Settings'] then
+-- 		Elements['Rayfield Settings'].LayoutOrder = 1000
+-- 	end
 
-	-- Create sections and elements
-	for categoryName, settingCategory in pairs(settingsTable) do
-		newTab:CreateSection(categoryName)
+-- 	-- Create sections and elements
+-- 	for categoryName, settingCategory in pairs(settingsTable) do
+-- 		newTab:CreateSection(categoryName)
 
-		for _, setting in pairs(settingCategory) do
-			if setting.Type == 'input' then
-				setting.Element = newTab:CreateInput({
-					Name = setting.Name,
-					CurrentValue = setting.Value,
-					PlaceholderText = setting.Placeholder,
-					Ext = true,
-					RemoveTextAfterFocusLost = setting.ClearOnFocus,
-					Callback = function(Value)
-						setting.Value = Value
-						updateSettings()
-					end,
-				})
-			elseif setting.Type == 'toggle' then
-				setting.Element = newTab:CreateToggle({
-					Name = setting.Name,
-					CurrentValue = setting.Value,
-					Ext = true,
-					Callback = function(Value)
-						setting.Value = Value
-						updateSettings()
-					end,
-				})
-			elseif setting.Type == 'bind' then
-				setting.Element = newTab:CreateKeybind({
-					Name = setting.Name,
-					CurrentKeybind = setting.Value,
-					HoldToInteract = false,
-					Ext = true,
-					CallOnChange = true,
-					Callback = function(Value)
-						setting.Value = Value
-						updateSettings()
-					end,
-				})
-			end
-		end
-	end
+-- 		for _, setting in pairs(settingCategory) do
+-- 			if setting.Type == 'input' then
+-- 				setting.Element = newTab:CreateInput({
+-- 					Name = setting.Name,
+-- 					CurrentValue = setting.Value,
+-- 					PlaceholderText = setting.Placeholder,
+-- 					Ext = true,
+-- 					RemoveTextAfterFocusLost = setting.ClearOnFocus,
+-- 					Callback = function(Value)
+-- 						setting.Value = Value
+-- 						--updateSettings()
+-- 					end,
+-- 				})
+-- 			elseif setting.Type == 'toggle' then
+-- 				setting.Element = newTab:CreateToggle({
+-- 					Name = setting.Name,
+-- 					CurrentValue = setting.Value,
+-- 					Ext = true,
+-- 					Callback = function(Value)
+-- 						setting.Value = Value
+-- 						--updateSettings()
+-- 					end,
+-- 				})
+-- 			elseif setting.Type == 'bind' then
+-- 				setting.Element = newTab:CreateKeybind({
+-- 					Name = setting.Name,
+-- 					CurrentKeybind = setting.Value,
+-- 					HoldToInteract = false,
+-- 					Ext = true,
+-- 					CallOnChange = true,
+-- 					Callback = function(Value)
+-- 						setting.Value = Value
+-- 						updateSettings()
+-- 					end,
+-- 				})
+-- 			end
+-- 		end
+-- 	end
 
-	settingsCreated = true
-	loadSettings()
-	updateSettings()
-end
+-- 	settingsCreated = true
+-- 	-- loadSettings()
+-- 	updateSettings()
+-- end
 
 
 
@@ -3392,9 +3416,9 @@ function RayfieldLibrary:CreateWindow(Settings)
 		end
 	end
 
-	local success, result = pcall(function()
-		createSettings(Window)
-	end)
+	-- local success, result = pcall(function()
+	-- 	createSettings(Window)
+	-- end)
 	
 	if not success then warn('Rayfield had an issue creating settings.') end
 	
