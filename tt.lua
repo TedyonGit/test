@@ -3420,7 +3420,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 	-- 	createSettings(Window)
 	-- end)
 	
-	if not success then warn('Rayfield had an issue creating settings.') end
+	--if not success then warn('Rayfield had an issue creating settings.') end
 	
 	return Window
 end
