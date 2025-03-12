@@ -3421,7 +3421,8 @@ function RayfieldLibrary:CreateWindow(Settings)
 	-- end)
 	
 	--if not success then warn('Rayfield had an issue creating settings.') end
-	
+	Topbar.Search.Position = Topbar.Settings.Position
+	Topbar.Settings:Destroy()
 	return Window
 end
 
