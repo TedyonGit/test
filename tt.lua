@@ -684,10 +684,10 @@ local function ChangeTheme(Theme)
 	Rayfield.Main.Topbar.ChangeSize.ImageColor3 = SelectedTheme.TextColor
 	Rayfield.Main.Topbar.Hide.ImageColor3 = SelectedTheme.TextColor
 	Rayfield.Main.Topbar.Search.ImageColor3 = SelectedTheme.TextColor
-	if Topbar:FindFirstChild('Settings') then
-		Rayfield.Main.Topbar.Settings.ImageColor3 = SelectedTheme.TextColor
-		Rayfield.Main.Topbar.Divider.BackgroundColor3 = SelectedTheme.ElementStroke
-	end
+	-- if Topbar:FindFirstChild('Settings') then
+	-- 	Rayfield.Main.Topbar.Settings.ImageColor3 = SelectedTheme.TextColor
+	-- 	Rayfield.Main.Topbar.Divider.BackgroundColor3 = SelectedTheme.ElementStroke
+	-- end
 
 	Main.Search.BackgroundColor3 = SelectedTheme.TextColor
 	Main.Search.Shadow.ImageColor3 = SelectedTheme.TextColor
@@ -3377,9 +3377,9 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Topbar.CornerRepair.BackgroundTransparency = 1
 	Topbar.Title.TextTransparency = 1
 	Topbar.Search.ImageTransparency = 1
-	if Topbar:FindFirstChild('Settings') then
-		Topbar.Settings.ImageTransparency = 1
-	end
+	-- if Topbar:FindFirstChild('Settings') then
+	-- 	Topbar.Settings.ImageTransparency = 1
+	-- end
 	Topbar.ChangeSize.ImageTransparency = 1
 	Topbar.Hide.ImageTransparency = 1
 
@@ -3394,10 +3394,10 @@ function RayfieldLibrary:CreateWindow(Settings)
 	task.wait(0.05)
 	TweenService:Create(Topbar.Search, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {ImageTransparency = 0.8}):Play()
 	task.wait(0.05)
-	if Topbar:FindFirstChild('Settings') then
-		TweenService:Create(Topbar.Settings, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {ImageTransparency = 0.8}):Play()
-		task.wait(0.05)
-	end
+	-- if Topbar:FindFirstChild('Settings') then
+	-- 	TweenService:Create(Topbar.Settings, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {ImageTransparency = 0.8}):Play()
+	-- 	task.wait(0.05)
+	-- end
 	TweenService:Create(Topbar.ChangeSize, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {ImageTransparency = 0.8}):Play()
 	task.wait(0.05)
 	TweenService:Create(Topbar.Hide, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {ImageTransparency = 0.8}):Play()
