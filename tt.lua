@@ -10,7 +10,7 @@
 ]]
 
 if debugX then
-	warn('Initialising Rayfieldd')
+	warn('Initialising Rayfield')
 end
 
 local function getService(name)
