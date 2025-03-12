@@ -1500,6 +1500,9 @@ function RayfieldLibrary:CreateWindow(Settings)
 		LoadingFrame.Version.Text = "Rayfield UI"
 	end
 
+	Topbar.Search.Position = Topbar.Settings.Position
+	Topbar.Settings:Destroy()
+
 	if Settings.Icon and Settings.Icon ~= 0 and Topbar:FindFirstChild('Icon') then
 		Topbar.Icon.Visible = true
 		Topbar.Title.Position = UDim2.new(0, 47, 0.5, 0)
@@ -3421,8 +3424,6 @@ function RayfieldLibrary:CreateWindow(Settings)
 	-- end)
 	
 	--if not success then warn('Rayfield had an issue creating settings.') end
-	Topbar.Search.Position = Topbar.Settings.Position
-	Topbar.Settings:Destroy()
 	return Window
 end
 
