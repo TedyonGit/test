@@ -650,6 +650,7 @@ local dragBarCosmetic = dragBar and dragBar.Drag or nil
 
 Topbar.Search.Position = Topbar.Settings.Position
 Topbar.Settings:Destroy()
+dragBar.Visible = false
 
 local dragOffset = 255
 local dragOffsetMobile = 150
@@ -1580,7 +1581,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 	end)
 
 
-	makeDraggable(Main, Topbar, false, {dragOffset, dragOffsetMobile})
+	makeDraggable(Main, Topbar, true, {dragOffset, dragOffsetMobile})
 	if dragBar then dragBar.Position = useMobileSizing and UDim2.new(0.5, 0, 0.5, dragOffsetMobile) or UDim2.new(0.5, 0, 0.5, dragOffset) makeDraggable(Main, dragInteract, true, {dragOffset, dragOffsetMobile}) end
 
 	for _, TabButton in ipairs(TabList:GetChildren()) do
