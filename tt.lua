@@ -3515,26 +3515,26 @@ Topbar.Search.MouseButton1Click:Connect(function()
 	end)
 end)
 
-if Topbar:FindFirstChild('Settings') then
-	Topbar.Settings.MouseButton1Click:Connect(function()
-		task.spawn(function()
-			for _, OtherTabButton in ipairs(TabList:GetChildren()) do
-				if OtherTabButton.Name ~= "Template" and OtherTabButton.ClassName == "Frame" and OtherTabButton ~= TabButton and OtherTabButton.Name ~= "Placeholder" then
-					TweenService:Create(OtherTabButton, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.TabBackground}):Play()
-					TweenService:Create(OtherTabButton.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextColor3 = SelectedTheme.TabTextColor}):Play()
-					TweenService:Create(OtherTabButton.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageColor3 = SelectedTheme.TabTextColor}):Play()
-					TweenService:Create(OtherTabButton, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.7}):Play()
-					TweenService:Create(OtherTabButton.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0.2}):Play()
-					TweenService:Create(OtherTabButton.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.2}):Play()
-					TweenService:Create(OtherTabButton.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 0.5}):Play()
-				end
-			end
+-- if Topbar:FindFirstChild('Settings') then
+-- 	-- Topbar.Settings.MouseButton1Click:Connect(function()
+-- 	-- 	task.spawn(function()
+-- 	-- 		for _, OtherTabButton in ipairs(TabList:GetChildren()) do
+-- 	-- 			if OtherTabButton.Name ~= "Template" and OtherTabButton.ClassName == "Frame" and OtherTabButton ~= TabButton and OtherTabButton.Name ~= "Placeholder" then
+-- 	-- 				TweenService:Create(OtherTabButton, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.TabBackground}):Play()
+-- 	-- 				TweenService:Create(OtherTabButton.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextColor3 = SelectedTheme.TabTextColor}):Play()
+-- 	-- 				TweenService:Create(OtherTabButton.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageColor3 = SelectedTheme.TabTextColor}):Play()
+-- 	-- 				TweenService:Create(OtherTabButton, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.7}):Play()
+-- 	-- 				TweenService:Create(OtherTabButton.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0.2}):Play()
+-- 	-- 				TweenService:Create(OtherTabButton.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.2}):Play()
+-- 	-- 				TweenService:Create(OtherTabButton.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 0.5}):Play()
+-- 	-- 			end
+-- 	-- 		end
 
-			Elements.UIPageLayout:JumpTo(Elements['Rayfield Settings'])
-		end)
-	end)
+-- 	-- 		Elements.UIPageLayout:JumpTo(Elements['Rayfield Settings'])
+-- 	-- 	end)
+-- 	-- end)
 
-end
+-- end
 
 
 Topbar.Hide.MouseButton1Click:Connect(function()
